@@ -1,0 +1,54 @@
+<div class="title">Edit Profile</div><br>
+<center>
+<% if @user.profile_picture.attached? %>
+<%= image_tag @user.profile_picture, width: "150px", height:"150px" %><br>
+<% else %>
+<%= image_tag "/assets/avatar.jpeg", width: "150px", height:"150px"%>
+<% end %>
+</center>
+<center><p>Profile Picture</p></center><br>
+<%= form_with url: "/profile/edit_profile", method: :post do |form| %>
+<center>
+
+<div class="field">
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-image" viewBox="0 0 16 16">
+    <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+    <path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z"/>
+  </svg>
+  <%= form.file_field :profile_picture %>
+</div><br>
+</center>
+
+<div class="field">
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+  </svg>
+  <%= form.text_field :firstname, placeholder: 'Enter your First Name', :maxlength=>"50",:value=>@user.firstname %><br>
+</div><br>
+
+<div class="field">
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+  </svg>
+  <%= form.text_field :lastname, placeholder: 'Enter your Last Name', :maxlength=>"50",:value=>@user.lastname %><br>
+</div><br>
+
+<div class="field">
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+  </svg>
+  <%= form.number_field :mobile, placeholder: 'Mobile Number' %><br>
+</div><br>
+
+<div class="field">
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-fill" viewBox="0 0 16 16">
+    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5h16V4H0V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5z"/>
+  </svg>
+  <%= form.date_field :dob, placeholder: 'date of birth' %><br>
+</div><br>
+
+<div class="button input-box"><br>
+  <%= form.submit "Edit Profile" %><br>
+</div>
+<% end %>
+
